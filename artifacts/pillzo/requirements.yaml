@@ -1,0 +1,23 @@
+packages:
+  "framer-motion": "For smooth scroll animations and page transitions"
+  "react-hook-form": "For robust contact form state management"
+  "@hookform/resolvers": "For Zod schema validation with react-hook-form"
+
+images:
+  - path: "artifacts/pillzo/public/images/hero-illustration.png"
+    description: "A very clean, minimal, 3D abstract illustration representing calm, modern healthcare. Soft shapes, pills, a stethoscope, and floating plus signs in soft blue, mint green, and white. Very reassuring and professional aesthetic."
+    aspect_ratio: "4:3"
+  - path: "artifacts/pillzo/public/images/founder-sandeep.png"
+    description: "Professional friendly headshot portrait of a man, South Asian descent, smiling, wearing a smart casual blazer over a t-shirt. Clean bright studio background."
+    aspect_ratio: "1:1"
+  - path: "artifacts/pillzo/public/images/founder-sachin.png"
+    description: "Professional friendly headshot portrait of a doctor, South Asian descent, smiling, wearing a white doctor's coat with a stethoscope around his neck. Clean bright hospital or studio background."
+    aspect_ratio: "1:1"
+  - path: "artifacts/pillzo/public/images/logo-icon.png"
+    description: "A minimal, modern medical logo icon. A soft blue cross mixed with a smiling face or heart shape. Flat vector style, clean, trustworthy."
+    aspect_ratio: "1:1"
+
+notes:
+  - Contact form is purely UI/frontend validation, showing a success state.
+  - T&C Modal uses standard shadcn dialog.
+  - Smooth scrolling implemented natively via CSS anchor links.
