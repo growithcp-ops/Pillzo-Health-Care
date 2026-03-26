@@ -46,6 +46,9 @@ export function Footer() {
               <li>
                 <button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: "smooth"})} className="text-sm text-white/70 hover:text-white transition-colors">Contact</button>
               </li>
+              <li>
+                <a href="/blog" className="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+              </li>
             </ul>
           </div>
 

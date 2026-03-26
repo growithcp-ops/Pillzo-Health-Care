@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Menu, X, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -32,12 +32,23 @@ export function Navbar() {
     }
   };
 
+  const [location] = useLocation();
+  const isOnBlog = location === "/blog";
+
   const navLinks = [
     { name: "About", id: "about" },
     { name: "How it Works", id: "how-it-works" },
     { name: "Pricing", id: "pricing" },
     { name: "Trust", id: "trust" },
   ];
+
+  const handleNavLink = (id: string) => {
+    if (isOnBlog) {
+      window.location.href = `/#${id}`;
+    } else {
+      scrollToId(id);
+    }
+  };
 
   return (
     <header 
@@ -48,37 +59,41 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div 
-            className="flex items-center gap-2 cursor-pointer group"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <div className="bg-primary/10 p-2 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-              <HeartPulse className="h-6 w-6" />
+          <Link href="/">
+            <div className="flex items-center gap-2 cursor-pointer group">
+              <div className="bg-primary/10 p-2 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <HeartPulse className="h-6 w-6" />
+              </div>
+              <div>
+                <span className="font-display font-bold text-2xl text-foreground tracking-tight">Pillzo</span>
+                <span className="block text-[10px] uppercase font-bold tracking-widest text-primary leading-none">Health & Simplified</span>
+              </div>
             </div>
-            <div>
-              <span className="font-display font-bold text-2xl text-foreground tracking-tight">Pillzo</span>
-              <span className="block text-[10px] uppercase font-bold tracking-widest text-primary leading-none">Health & Simplified</span>
-            </div>
-          </div>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => scrollToId(link.id)}
+                onClick={() => handleNavLink(link.id)}
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
               >
                 {link.name}
               </button>
             ))}
+            <Link href="/blog">
+              <span className={`text-sm font-medium transition-colors cursor-pointer ${isOnBlog ? "text-primary font-semibold" : "text-foreground/80 hover:text-primary"}`}>
+                Blog
+              </span>
+            </Link>
           </nav>
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
             <Button 
               className="hidden md:flex rounded-full px-6 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all"
-              onClick={() => scrollToId("contact")}
+              onClick={() => handleNavLink("contact")}
             >
               Book a Call
             </Button>
@@ -101,15 +116,20 @@ export function Navbar() {
           {navLinks.map((link) => (
             <button
               key={link.name}
-              onClick={() => scrollToId(link.id)}
+              onClick={() => { handleNavLink(link.id); setMobileMenuOpen(false); }}
               className="text-left px-4 py-3 rounded-xl hover:bg-muted text-foreground font-medium transition-colors"
             >
               {link.name}
             </button>
           ))}
+          <Link href="/blog" onClick={() => setMobileMenuOpen(false)}>
+            <span className="block text-left px-4 py-3 rounded-xl hover:bg-muted text-foreground font-medium transition-colors cursor-pointer">
+              Blog
+            </span>
+          </Link>
           <Button 
             className="w-full rounded-xl py-6 text-base"
-            onClick={() => scrollToId("contact")}
+            onClick={() => { handleNavLink("contact"); setMobileMenuOpen(false); }}
           >
             Book a Call
           </Button>
