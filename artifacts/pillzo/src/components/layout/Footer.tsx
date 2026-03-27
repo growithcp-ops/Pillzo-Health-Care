@@ -1,11 +1,9 @@
+import { Link } from "wouter";
 import { HeartPulse, Mail, Phone, MapPin } from "lucide-react";
 import { TermsModal } from "@/components/TermsModal";
+import { createPhoneUrl, phoneNumber } from "@/lib/contact";
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="bg-foreground text-white pt-16 pb-8 border-t border-border/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,20 +11,19 @@ export function Footer() {
           
           {/* Brand Col */}
           <div className="col-span-1 md:col-span-2">
-            <div 
-              className="flex items-center gap-2 cursor-pointer mb-4 w-fit"
-              onClick={scrollToTop}
-            >
-              <div className="bg-primary/20 p-2 rounded-xl text-primary-foreground">
-                <HeartPulse className="h-6 w-6" />
+            <Link href="/">
+              <div className="flex items-center gap-2 cursor-pointer mb-4 w-fit">
+                <div className="bg-primary/20 p-2 rounded-xl text-primary-foreground">
+                  <HeartPulse className="h-6 w-6" />
+                </div>
+                <div>
+                  <span className="font-display font-bold text-2xl text-white tracking-tight">Pillzo</span>
+                  <span className="block text-[10px] uppercase font-bold tracking-widest text-primary/80 leading-none">Health & Simplified</span>
+                </div>
               </div>
-              <div>
-                <span className="font-display font-bold text-2xl text-white tracking-tight">Pillzo</span>
-                <span className="block text-[10px] uppercase font-bold tracking-widest text-primary/80 leading-none">Health & Simplified</span>
-              </div>
-            </div>
+            </Link>
             <p className="text-white/70 max-w-sm text-sm leading-relaxed mb-6">
-              Your door to medical peace of mind. We connect you instantly to expert doctors because panic should never be part of your healthcare experience.
+              Pillzo helps patients order pharmaceutical products and book doctor appointments through a simpler, more guided healthcare experience.
             </p>
           </div>
 
@@ -35,19 +32,19 @@ export function Footer() {
             <h4 className="font-display font-semibold text-lg mb-4 text-white">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <button onClick={scrollToTop} className="text-sm text-white/70 hover:text-white transition-colors">Home</button>
+                <Link href="/" className="text-sm text-white/70 hover:text-white transition-colors">Home</Link>
               </li>
               <li>
-                <button onClick={() => document.getElementById('about')?.scrollIntoView({behavior: "smooth"})} className="text-sm text-white/70 hover:text-white transition-colors">About Us</button>
+                <Link href="/pharmacy" className="text-sm text-white/70 hover:text-white transition-colors">Pharmacy</Link>
               </li>
               <li>
-                <button onClick={() => document.getElementById('pricing')?.scrollIntoView({behavior: "smooth"})} className="text-sm text-white/70 hover:text-white transition-colors">Pricing</button>
+                <Link href="/appointments" className="text-sm text-white/70 hover:text-white transition-colors">Appointments</Link>
               </li>
               <li>
-                <button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: "smooth"})} className="text-sm text-white/70 hover:text-white transition-colors">Contact</button>
+                <a href="/appointments#contact" className="text-sm text-white/70 hover:text-white transition-colors">Contact</a>
               </li>
               <li>
-                <a href="/blog" className="text-sm text-white/70 hover:text-white transition-colors">Blog</a>
+                <Link href="/blog" className="text-sm text-white/70 hover:text-white transition-colors">Blog</Link>
               </li>
             </ul>
           </div>
@@ -58,7 +55,9 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-white/70">
                 <Phone className="h-4 w-4 mt-0.5 text-primary/80 shrink-0" />
-                <span>+1 (800) 123-4567</span>
+                <a href={createPhoneUrl()} className="hover:text-white transition-colors">
+                  {phoneNumber}
+                </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/70">
                 <Mail className="h-4 w-4 mt-0.5 text-primary/80 shrink-0" />

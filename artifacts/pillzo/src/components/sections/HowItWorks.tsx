@@ -1,28 +1,28 @@
 import { motion } from "framer-motion";
-import { MessageSquareText, Search, Video } from "lucide-react";
+import { MessageSquareText, Search, ClipboardCheck } from "lucide-react";
 
 export function HowItWorks() {
   const steps = [
     {
       icon: MessageSquareText,
-      title: "Tell Us What's Wrong",
-      description: "Describe your symptoms in your own words. No medical jargon required.",
+      title: "Tell Us What You Need",
+      description: "Share your symptoms, prescription needs, or healthcare request in simple language.",
       color: "text-primary",
       bg: "bg-primary/10",
       delay: 0.1
     },
     {
       icon: Search,
-      title: "We Match You Instantly",
-      description: "Our system immediately finds the right available doctor for your specific needs.",
+      title: "We Guide You to the Right Service",
+      description: "We help you move toward the right doctor appointment or pharmacy support path.",
       color: "text-secondary",
       bg: "bg-secondary/20",
       delay: 0.2
     },
     {
-      icon: Video,
-      title: "Talk to Your Doctor",
-      description: "Start a video or phone consultation right away from the comfort of home.",
+      icon: ClipboardCheck,
+      title: "Move Forward With Confidence",
+      description: "Book the consultation you need or complete your pharmaceutical product request with guided support.",
       color: "text-accent",
       bg: "bg-accent/10",
       delay: 0.3

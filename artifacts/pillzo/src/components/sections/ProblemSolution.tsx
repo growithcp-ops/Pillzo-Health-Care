@@ -5,15 +5,16 @@ import { Card } from "@/components/ui/card";
 export function ProblemSolution() {
   const problems = [
     "Calling multiple clinics blindly",
+    "Searching separately for medicines and consultations",
     "Waiting on hold to endless menus",
-    "3-week wait times for a 10min slot",
+    "Confusing next steps after a prescription or health concern",
     "Panic, confusion, and anxiety"
   ];
 
   const solutions = [
-    "Instant connection to care",
-    "No waiting rooms, digital or physical",
-    "See a licensed doctor right now",
+    "A clearer path to appointments or product support",
+    "One place for doctor booking and pharmacy help",
+    "Guided care coordination instead of guesswork",
     "Calm, assured peace of mind"
   ];
 

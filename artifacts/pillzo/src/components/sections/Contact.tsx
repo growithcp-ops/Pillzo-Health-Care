@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { createWhatsAppUrl } from "@/lib/contact";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -53,20 +54,20 @@ export function Contact() {
               <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-black/10 rounded-full blur-2xl"></div>
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-display font-bold mb-4">We're here for you.</h3>
+                <h3 className="text-2xl font-display font-bold mb-4">We're here whenever you need us.</h3>
                 <p className="text-primary-foreground/80 leading-relaxed mb-8">
-                  Get fast, calm answers to your medical concerns. Reach out now.
+                  Reach out for help with medicines, doctor appointments, or simply figuring out the best next step.
                 </p>
               </div>
 
               <div className="space-y-6 relative z-10">
-                <a href="https://wa.me/1234567890" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-white hover:text-white/80 transition-colors group">
+                <a href={createWhatsAppUrl("Hi, I need help with a medicine order or doctor appointment.")} target="_blank" rel="noreferrer" className="flex items-center gap-4 text-white hover:text-white/80 transition-colors group">
                   <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-[#25D366] transition-colors">
                     <PhoneCall className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm text-primary-foreground/70">Urgent Request?</p>
-                    <p className="font-semibold">WhatsApp Us</p>
+                    <p className="text-sm text-primary-foreground/70">Want the fastest reply?</p>
+                    <p className="font-semibold">Message us on WhatsApp</p>
                   </div>
                 </a>
               </div>
@@ -75,10 +76,10 @@ export function Contact() {
             {/* Right Col - Form */}
             <div className="md:col-span-3 p-10 md:p-12">
               <h2 className="text-3xl font-display font-bold text-foreground mb-2">
-                Ready to Experience Calm Healthcare?
+                Tell us what you need help with
               </h2>
               <p className="text-muted-foreground mb-8">
-                Leave your email and a coordinator will reach out to schedule your introductory call within 5 minutes.
+                Leave your email and our team will get back to you with help for medicines, doctor appointments, or any question about getting started.
               </p>
 
               {isSubmitted ? (
@@ -90,9 +91,9 @@ export function Contact() {
                   <div className="w-16 h-16 bg-secondary/30 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-8 h-8 text-secondary-foreground" />
                   </div>
-                  <h4 className="text-xl font-bold text-foreground mb-2">Request Received</h4>
+                  <h4 className="text-xl font-bold text-foreground mb-2">Thanks, we’ve got your request</h4>
                   <p className="text-muted-foreground">
-                    A dedicated health coordinator is reviewing your request and will email you shortly. Breathe easy, we've got you.
+                    One of our team members is reviewing your message and will email you shortly to help with your medicines or appointment needs.
                   </p>
                 </motion.div>
               ) : (
@@ -119,7 +120,7 @@ export function Contact() {
                     />
                     
                     <Button type="submit" size="lg" className="w-full h-14 rounded-xl text-lg font-semibold shadow-md shadow-primary/20 hover:-translate-y-0.5 transition-all">
-                      Get in Touch
+                      Send My Request
                     </Button>
                     <p className="text-xs text-center text-muted-foreground mt-4">
                       By submitting, you agree to our terms and conditions. Your data is secure and HIPAA compliant.

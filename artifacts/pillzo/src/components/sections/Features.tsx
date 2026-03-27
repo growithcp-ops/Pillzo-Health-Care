@@ -7,22 +7,22 @@ export function Features() {
     {
       icon: ShieldAlert,
       title: "No More Panic",
-      desc: "Get an instant roadmap to care. Knowing what to do next is half the cure."
+      desc: "Get a clearer roadmap for doctor appointments or pharmaceutical product support."
     },
     {
       icon: Zap,
-      title: "No More Waiting",
-      desc: "Connect to doctors immediately. Your health shouldn't be put on hold."
+      title: "Faster Next Steps",
+      desc: "Move toward booking or ordering without bouncing between multiple platforms."
     },
     {
       icon: UserCheck,
-      title: "Your Health Partner",
-      desc: "We aren't just a booking site; we follow up to ensure you're recovering."
+      title: "More Than a Booking Site",
+      desc: "Pillzo supports doctor appointments and pharmacy requests in one guided experience."
     },
     {
       icon: HeartHandshake,
       title: "Calm Access",
-      desc: "Designed to be simple. Easy to use UI for peace of mind when you need it most."
+      desc: "Designed to be simple, easy to use, and less stressful when you need help quickly."
     }
   ];
 

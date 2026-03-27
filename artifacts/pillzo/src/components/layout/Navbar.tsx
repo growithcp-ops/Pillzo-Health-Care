@@ -2,58 +2,49 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { createWhatsAppUrl } from "@/lib/contact";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (ticking) {
+        return;
+      }
+
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        setIsScrolled((current) => {
+          const next = window.scrollY > 20;
+          return current === next ? current : next;
+        });
+        ticking = false;
+      });
     };
-    window.addEventListener("scroll", handleScroll);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToId = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // Navbar height
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   const [location] = useLocation();
-  const isOnBlog = location === "/blog";
-
   const navLinks = [
-    { name: "About", id: "about" },
-    { name: "How it Works", id: "how-it-works" },
-    { name: "Pricing", id: "pricing" },
-    { name: "Trust", id: "trust" },
+    { name: "Home", href: "/" },
+    { name: "Pharmacy", href: "/pharmacy" },
+    { name: "Appointments", href: "/appointments" },
+    { name: "Blog", href: "/blog" },
   ];
 
-  const handleNavLink = (id: string) => {
-    if (isOnBlog) {
-      window.location.href = `/#${id}`;
-    } else {
-      scrollToId(id);
-    }
-  };
+  const isActiveLink = (href: string) => location === href;
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
+        isScrolled ? "bg-white/95 shadow-sm py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,28 +65,30 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => handleNavLink(link.id)}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-              >
-                {link.name}
-              </button>
+              <Link key={link.name} href={link.href}>
+                <span
+                  className={`text-sm font-medium transition-colors cursor-pointer ${
+                    isActiveLink(link.href)
+                      ? "text-primary font-semibold"
+                      : "text-foreground/80 hover:text-primary"
+                  }`}
+                >
+                  {link.name}
+                </span>
+              </Link>
             ))}
-            <Link href="/blog">
-              <span className={`text-sm font-medium transition-colors cursor-pointer ${isOnBlog ? "text-primary font-semibold" : "text-foreground/80 hover:text-primary"}`}>
-                Blog
-              </span>
-            </Link>
           </nav>
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            <Button 
-              className="hidden md:flex rounded-full px-6 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all"
-              onClick={() => handleNavLink("contact")}
-            >
-              Book a Call
+            <Button asChild className="hidden md:flex rounded-full px-6 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all">
+              <a
+                href={createWhatsAppUrl("Hi, I want to book a doctor appointment with Pillzo.")}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Book Appointment
+              </a>
             </Button>
             
             <button 
@@ -114,24 +107,27 @@ export function Navbar() {
       }`}>
         <div className="flex flex-col p-4 space-y-4 border-t border-border/50">
           {navLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => { handleNavLink(link.id); setMobileMenuOpen(false); }}
-              className="text-left px-4 py-3 rounded-xl hover:bg-muted text-foreground font-medium transition-colors"
-            >
-              {link.name}
-            </button>
+            <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)}>
+              <span
+                className={`block text-left px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
+                  isActiveLink(link.href)
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-muted text-foreground"
+                }`}
+              >
+                {link.name}
+              </span>
+            </Link>
           ))}
-          <Link href="/blog" onClick={() => setMobileMenuOpen(false)}>
-            <span className="block text-left px-4 py-3 rounded-xl hover:bg-muted text-foreground font-medium transition-colors cursor-pointer">
-              Blog
-            </span>
-          </Link>
-          <Button 
-            className="w-full rounded-xl py-6 text-base"
-            onClick={() => { handleNavLink("contact"); setMobileMenuOpen(false); }}
-          >
-            Book a Call
+          <Button asChild className="w-full rounded-xl py-6 text-base">
+            <a
+              href={createWhatsAppUrl("Hi, I want to book a doctor appointment with Pillzo.")}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Book Appointment
+            </a>
           </Button>
         </div>
       </div>
