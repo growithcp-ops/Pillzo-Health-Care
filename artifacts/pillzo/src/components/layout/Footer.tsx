@@ -22,9 +22,6 @@ export function Footer() {
                 </div>
               </div>
             </Link>
-            <p className="text-white/70 max-w-sm text-sm leading-relaxed mb-6">
-              Pillzo helps patients order pharmaceutical products and book doctor appointments through a simpler, more guided healthcare experience.
-            </p>
           </div>
 
           {/* Links Col */}
@@ -65,7 +62,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-white/70">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary/80 shrink-0" />
-                <span>123 Care Avenue, Suite 400<br/>San Francisco, CA 94107</span>
+                <span>Odisha</span>
               </li>
             </ul>
           </div>

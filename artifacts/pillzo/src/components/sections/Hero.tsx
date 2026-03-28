@@ -65,7 +65,7 @@ export function Hero() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Chat to Order
+                  Chat to Order Medicines
                   <MessageCircleMore className="ml-2 w-5 h-5" />
                 </a>
               </Button>
@@ -80,7 +80,7 @@ export function Hero() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Chat to Book
+                  Chat to Book Doctor Appointment
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>

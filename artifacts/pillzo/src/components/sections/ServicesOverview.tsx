@@ -5,22 +5,22 @@ import { createWhatsAppUrl } from "@/lib/contact";
 
 const services = [
   {
-    icon: Pill,
-    title: "Pharmacy Ordering",
-    description:
-      "Order pharmaceutical products with caring WhatsApp support, refill help, and a simple step-by-step flow.",
-    points: ["Tell us what medicine you need", "Get friendly help on WhatsApp", "Stay supported from request to confirmation"],
-    href: createWhatsAppUrl("Hi, I want to order pharmaceutical products from Pillzo."),
-    cta: "Chat About Medicines",
-  },
-  {
     icon: Stethoscope,
     title: "Doctor Appointments",
     description:
       "Book appointments with doctors for thoughtful guidance, consultation support, and follow-up planning.",
     points: ["General and follow-up consultations", "Easy booking support", "Help choosing the right next step"],
     href: createWhatsAppUrl("Hi, I want to book a doctor appointment with Pillzo."),
-    cta: "Chat About Appointments",
+    cta: "Chat to Book Doctor Appointment",
+  },
+  {
+    icon: Pill,
+    title: "Pharmacy Ordering",
+    description:
+      "Order pharmaceutical products with caring WhatsApp support, refill help, and a simple step-by-step flow.",
+    points: ["Tell us what medicine you need", "Get friendly help on WhatsApp", "Stay supported from request to confirmation"],
+    href: createWhatsAppUrl("Hi, I want to order pharmaceutical products from Pillzo."),
+    cta: "Chat to Order Medicines",
   },
 ];
 

@@ -131,7 +131,7 @@ export default function Appointments() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Chat to Book
+                    Chat to Book Doctor Appointment
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-xl h-14 px-8 text-lg bg-white">
@@ -140,7 +140,7 @@ export default function Appointments() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Chat About Medicines
+                    Chat to Order Medicines
                   </a>
                 </Button>
               </div>
@@ -299,7 +299,7 @@ export default function Appointments() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Chat About Medicines
+                  Chat to Order Medicines
                 </a>
               </Button>
             </div>

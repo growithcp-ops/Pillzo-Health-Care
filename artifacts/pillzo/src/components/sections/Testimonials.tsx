@@ -26,6 +26,26 @@ export function Testimonials() {
       text: "As a parent, having instant access to pediatric advice is priceless. Pillzo is now part of our family routine.",
       author: "Priya L.",
       initials: "PL"
+    },
+    {
+      text: "I used Pillzo to book a doctor appointment for my father, and the process felt calm and simple from start to finish.",
+      author: "Ankit R.",
+      initials: "AR"
+    },
+    {
+      text: "Ordering medicines on WhatsApp was much easier than I expected. The team kept me updated and answered every question clearly.",
+      author: "Neha S.",
+      initials: "NS"
+    },
+    {
+      text: "Usually I spend too much time figuring out what to do first. Pillzo gave me a clear next step and helped me book quickly.",
+      author: "David P.",
+      initials: "DP"
+    },
+    {
+      text: "After my consultation, I was also able to get help with medicines without starting over. That connected experience really stood out.",
+      author: "Meera T.",
+      initials: "MT"
     }
   ];
 

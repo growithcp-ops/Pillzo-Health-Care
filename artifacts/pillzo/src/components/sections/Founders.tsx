@@ -15,7 +15,7 @@ export function Founders() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 max-w-2xl mx-auto">
           
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -28,7 +28,7 @@ export function Founders() {
                 {/* Fallback pattern while loading */}
                 <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:16px_16px]"></div>
                 <img 
-                  src={`${import.meta.env.BASE_URL}images/founder-sandeep.png`}
+                  src={`${import.meta.env.BASE_URL}images/founder-sandeep.jpg`}
                   alt="Sandeep Ray"
                   className="w-full h-full object-cover object-top relative z-10 group-hover:scale-105 transition-transform duration-500"
                 />
@@ -37,29 +37,6 @@ export function Founders() {
               <p className="text-primary font-medium mb-3">Founder</p>
               <p className="text-muted-foreground leading-relaxed text-sm">
                 Driven by a personal experience with a broken healthcare system, Sandeep is passionate about making immediate, quality healthcare accessible and stress-free for everyone.
-              </p>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Card className="overflow-hidden border-none shadow-none bg-transparent group">
-              <div className="aspect-square rounded-3xl overflow-hidden mb-6 bg-muted relative">
-                <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:16px_16px]"></div>
-                <img 
-                  src={`${import.meta.env.BASE_URL}images/founder-sachin.png`}
-                  alt="Dr. Sachin Upadhyay"
-                  className="w-full h-full object-cover object-top relative z-10 group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <h3 className="text-2xl font-bold font-display text-foreground mb-1">Dr. Sachin Upadhyay</h3>
-              <p className="text-primary font-medium mb-3">Co-founder & Medical Director</p>
-              <p className="text-muted-foreground leading-relaxed text-sm">
-                With over 15+ years of clinical experience, Dr. Sachin ensures that the medical care provided through Pillzo meets the highest standards of safety and efficacy.
               </p>
             </Card>
           </motion.div>
