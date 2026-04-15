@@ -1,11 +1,15 @@
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Hero } from "@/components/sections/Hero";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
+import { DoctorHomeVisit } from "@/components/sections/DoctorHomeVisit";
 import { CarePrograms } from "@/components/sections/CarePrograms";
+
 import { ProblemSolution } from "@/components/sections/ProblemSolution";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Features } from "@/components/sections/Features";
+import { Corporate } from "@/components/sections/Corporate";
 import { Testimonials } from "@/components/sections/Testimonials";
+
 import { Clients } from "@/components/sections/Clients";
 import { Founders } from "@/components/sections/Founders";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -39,11 +43,15 @@ export default function Home() {
     <SiteLayout>
       <Hero />
       <ServicesOverview />
+      <DoctorHomeVisit />
       <CarePrograms />
+
       <ProblemSolution />
       <HowItWorks />
       <Features />
+      <Corporate />
       <Testimonials />
+
       <Clients />
       <Founders />
       <FaqSection

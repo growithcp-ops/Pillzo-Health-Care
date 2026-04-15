@@ -34,12 +34,39 @@ export function Navbar() {
   const [location] = useLocation();
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "Corporate", href: "/#corporate" },
+    { name: "Doctor at Home", href: "/#doctor-at-home" },
     { name: "Pharmacy", href: "/pharmacy" },
     { name: "Appointments", href: "/appointments" },
-    { name: "Blog", href: "/blog" },
   ];
 
+
+
   const isActiveLink = (href: string) => location === href;
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMobileMenuOpen(false);
+    
+    // Check if it's an anchor link on the current page
+    if (href.startsWith("/#") && (location === "/")) {
+      e.preventDefault();
+      const id = href.split("#")[1];
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80; // Navbar height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+        
+        // Update URL hash without jumping
+        window.history.pushState(null, "", `#${id}`);
+      }
+    }
+  };
 
   return (
     <header 
@@ -66,7 +93,8 @@ export function Navbar() {
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.href}>
-                <span
+                <a
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`text-sm font-medium transition-colors cursor-pointer ${
                     isActiveLink(link.href)
                       ? "text-primary font-semibold"
@@ -74,7 +102,7 @@ export function Navbar() {
                   }`}
                 >
                   {link.name}
-                </span>
+                </a>
               </Link>
             ))}
           </nav>
@@ -107,8 +135,9 @@ export function Navbar() {
       }`}>
         <div className="flex flex-col p-4 space-y-4 border-t border-border/50">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} onClick={() => setMobileMenuOpen(false)}>
-              <span
+            <Link key={link.name} href={link.href}>
+              <a
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`block text-left px-4 py-3 rounded-xl font-medium transition-colors cursor-pointer ${
                   isActiveLink(link.href)
                     ? "bg-primary/10 text-primary"
@@ -116,7 +145,7 @@ export function Navbar() {
                 }`}
               >
                 {link.name}
-              </span>
+              </a>
             </Link>
           ))}
           <Button asChild className="w-full rounded-xl py-6 text-base">
@@ -132,5 +161,6 @@ export function Navbar() {
         </div>
       </div>
     </header>
+
   );
 }
