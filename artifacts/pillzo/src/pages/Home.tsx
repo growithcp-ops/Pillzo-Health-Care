@@ -6,6 +6,7 @@ import { ProblemSolution } from "@/components/sections/ProblemSolution";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Features } from "@/components/sections/Features";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { Clients } from "@/components/sections/Clients";
 import { Founders } from "@/components/sections/Founders";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { Contact } from "@/components/sections/Contact";
@@ -43,6 +44,7 @@ export default function Home() {
       <HowItWorks />
       <Features />
       <Testimonials />
+      <Clients />
       <Founders />
       <FaqSection
         title="Questions Patients Usually Ask First"
@@ -53,3 +55,4 @@ export default function Home() {
     </SiteLayout>
   );
 }
+
