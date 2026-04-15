@@ -28,7 +28,7 @@ export function Founders() {
                 {/* Fallback pattern while loading */}
                 <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_2px,transparent_2px)] [background-size:16px_16px]"></div>
                 <img 
-                  src={`${import.meta.env.BASE_URL}images/founder-sandeep.jpg`}
+                  src={`${import.meta.env.BASE_URL}images/ceo.jpeg`}
                   alt="Sandeep Ray"
                   className="w-full h-full object-cover object-top relative z-10 group-hover:scale-105 transition-transform duration-500"
                 />
